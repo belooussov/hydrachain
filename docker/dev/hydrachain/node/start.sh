@@ -45,5 +45,6 @@ rsync -a --delete /hydrachain.src/* /hydrachain/
 cd /hydrachain
 pip install -e .
 
-echo /usr/local/bin/hydrachain --bootstrap_node "$BOOTSTRAP_NODE" -l:debug -c jsonrpc.listen_host=0.0.0.0 "$@" runlocal --num_validators ${NODE_COUNT} --node_num ${OWN_INDEX} --seed ${SEED}
-/usr/local/bin/hydrachain --bootstrap_node "$BOOTSTRAP_NODE" -l:debug -c jsonrpc.listen_host=0.0.0.0 "$@" runlocal --num_validators ${NODE_COUNT} --node_num ${OWN_INDEX} --seed ${SEED}
+echo /usr/local/bin/hydrachain --bootstrap_node "$BOOTSTRAP_NODE" -l:debug -c jsonrpc.listen_host=0.0.0.0 "$@" runlocal --num_validators 5 --node_num 4 --seed 42
+/usr/local/bin/hydrachain --bootstrap_node "$BOOTSTRAP_NODE" -l:debug -c jsonrpc.listen_host=0.0.0.0 "$@" runlocal --num_validators 5 --node_num 4 --seed 42
+

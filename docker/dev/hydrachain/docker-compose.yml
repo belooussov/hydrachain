@@ -1,6 +1,7 @@
 bootstrap:
   build: node
   container_name: hydrachain_node_bootstrap
+  hostname: hydrachain_node_bootstrap
   links:
     - statsmon
   volumes:
@@ -12,16 +13,20 @@ bootstrap:
     - "127.0.0.1:30303:30303/udp"
   environment:
     - HYDRACHAIN_HOST_PREFIX
+    - NODE_COUNT=4
 
 node:
   build: node
   links:
     - statsmon
+    - bootstrap
   volumes:
     - ../../../../hydrachain:/hydrachain.src:ro
     - ../../../../pyethapp:/pyethapp.src:ro
   environment:
     - HYDRACHAIN_HOST_PREFIX
+    - NODE_COUNT=4
+    - OWN_INDEX=4
 
 statsmon:
   build: statsmon

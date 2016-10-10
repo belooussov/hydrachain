@@ -17,6 +17,7 @@ RUN cd /root &&\
     npm install -g pm2
 
 RUN pip install -U setuptools
+RUN pip install -U pygelf
 RUN pip install -U pip
 
 WORKDIR /
@@ -36,4 +37,5 @@ RUN chmod +x /root/start.sh
 RUN chmod +x /root/mk_enode.py
 RUN chmod +x /root/settle_file.py
 
+ENV NODE_COUNT 9
 ENTRYPOINT /root/start.sh
